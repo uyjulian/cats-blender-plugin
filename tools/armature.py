@@ -280,28 +280,28 @@ class FixArmature(bpy.types.Operator):
                 if layer:
                     get_current_layers.append(i)
 
-        if len(armature.children) > 1:
-            for child in armature.children:
-                for child2 in child.children:
-                    if child2.type != 'MESH':
-                        Common.delete(child2)
-                        continue
-                    in_layer = False
-                    for i in get_current_layers:
-                        if child2.layers[i]:
-                            in_layer = True
-                    if not in_layer:
-                        Common.delete(child2)
+        # if len(armature.children) > 1:
+        #     for child in armature.children:
+        #         for child2 in child.children:
+        #             if child2.type != 'MESH':
+        #                 Common.delete(child2)
+        #                 continue
+        #             in_layer = False
+        #             for i in get_current_layers:
+        #                 if child2.layers[i]:
+        #                     in_layer = True
+        #             if not in_layer:
+        #                 Common.delete(child2)
 
-                if child.type != 'MESH':
-                    Common.delete(child)
-                    continue
-                in_layer = False
-                for i in get_current_layers:
-                    if child.layers[i]:
-                        in_layer = True
-                if not in_layer and hasattr(bpy.context.scene, 'layers'):
-                    Common.delete(child)
+        #         if child.type != 'MESH':
+        #             Common.delete(child)
+        #             continue
+        #         in_layer = False
+        #         for i in get_current_layers:
+        #             if child.layers[i]:
+        #                 in_layer = True
+        #         if not in_layer and hasattr(bpy.context.scene, 'layers'):
+        #             Common.delete(child)
 
         # Unlock all transforms
         for i in range(0, 3):
